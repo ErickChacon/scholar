@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    {{ range .Sections }}
+    <div class="container">
+      <h2 class="text-center"> {{ .Title }} </h2>
+      <hr>
+    </div>
+    <div class="card-columns">
+      {{ range .Data.Pages }}
+        <div class="card text-justify">
+          <img class="card-img-top" src={{ "/images/" | relURL }}{{ .Params.image }} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"> {{ .Title }}</h5>
+              <p class="card-text"> {{ .Summary }} </p>
+              <p class="card-text">
+                <small class="text-muted">
+                  {{ range .Params.tags}}
+                  <span class="badge badge-light badge-pill text-secondary"> {{ . }}</span>
+                  {{ end }}
+                </small>
+              </p>
+            </div>
+        </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
