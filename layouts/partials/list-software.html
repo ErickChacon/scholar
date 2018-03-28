@@ -1,48 +1,21 @@
-<div class="container">
-  <div class="row">
-    {{ range .Sections }}
-    <div class="container">
-      <h2 class="text-center"> {{ .Title }} </h2>
-      <hr>
-    </div>
-    <div class="card-columns">
-      {{ range .Data.Pages }}
-        <div class="card text-justify">
-          <!-- <a href="{{ .Params.link }}" target="_blank"> -->
-            <img class="card-img-top" src={{ "/images/" | relURL }}{{ .Params.image }} alt="Link of the project">
-          <!-- </a> -->
-            <div class="card-body">
-              <h5 class="card-title"> {{ .Title }}</h5>
-              <p class="card-text"> {{ .Summary }} </p>
-              <p class="card-text">
-                <small class="text-muted">
-                  {{ range .Params.tags}}
-                  <span class="badge badge-light badge-pill text-secondary"> {{ . }}</span>
-                  {{ end }}
-                </small>
-              </p>
-            </div>
-        </div>
-      {{ end }}
-    </div>
-    {{ end }}
-  </div>
-</div>
 
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row mb-2">
     {{ range .Sections }}
+      {{ $currentSection := .}}
       {{ range .Data.Pages }}
-      <div class="col-lg-10 col-md-12">
+      <div class="col-lg-10 col-md-12 offset-lg-1">
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
           <img class="card-img-top col-lg-3 col-md-4 border-right rounded" src={{ "/images/" | relURL }}{{ .Params.image }} alt="Card image cap" style="padding:0;">
           <div class="card-body d-flex flex-column align-items-start ml-0 border-primary">
-            <strong class="d-inline-block mb-2 text-primary">R Package</strong>
+            <strong class="d-inline-block mb-2 text-primary">
+              {{ $currentSection.Title }}
+            </strong>
             <h5 class="mb-0">
-              <a class="text-dark" href="#">{{ .Title }}</a>
+              <a class="text-dark" href="#">{{ .Params.shortitle }}</a>
             </h5>
-            <div class="mb-1 text-muted">{{ .Params.shortitle }}</div>
+            <div class="mb-1 text-muted">{{ .Title }}</div>
             <p class="card-text mb-auto">
             {{ .Content  }}
             </p>
