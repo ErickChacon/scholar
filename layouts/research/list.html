@@ -51,31 +51,43 @@ body {
       <div class="row">
         <div class="col-lg-10 offset-lg-1 col-md-12 text-justify">
           <ul class="fa-ul">
-            {{ range .Data.Pages }}
+            {{ range (.Data.Pages).Reverse }}
             {{ $RelPermalink := .RelPermalink }}
             {{ range .Params.references }}
             <li><i class="fa-li fa fa-file text-secondary"></i>
               <div id="ref-"{{ .id }}>
                 {{ $len := (len .author) }}
-                {{ range $index, $element := .author}}
-                  {{ .family }}, {{ .given}}
-                  {{ if lt (add $index 2) $len }}, {{end}}
-                  {{ if eq (add $index 2) $len }} and {{end}}
-                {{ end }},
+                  {{ range $index, $element := .author}}
+                    {{ if lt (add $index 2) $len}}
+                      {{ .family }}, {{ .given}},
+                    {{ else if lt (add $index 1) $len}}
+                      {{ .family }}, {{ .given}} and
+                    {{ else if eq (add $index 1) $len}}
+                      {{ .family }}, {{ .given}};
+                    {{ end }}
+                  {{ end }}
                 {{ (index .issued 0).year }}.
-                “{{ .title | markdownify }}.”
-                <em> {{ index . "container-title" }}</em>
+                <strong>
+                  “{{ .title | markdownify }}.”
+                </strong>
+              {{ if eq .type "article-journal" }}
+                <em> {{ index . "container-title" }} </em>
                 {{ .volume }} ({{ .issue }}): {{ .page }}.
                 {{ if isset . "DOI"}}
                   doi:<a href="https://doi.org/{{ .DOI }}"> {{ .DOI }}</a>.
                 {{ end }}
+              {{ else }}
+                <em>{{ .publisher }}</em>, {{ .page }} p.
+              {{ end }}
               </div>
             </li>
             <a  class="badge badge-primary" href="{{ $RelPermalink }}"
               role="button">Summary</a>
+            {{ if isset . "DOI"}}
             <a  class="badge badge-primary" href="https://doi.org/{{ .DOI }}"
               role="button">DOI</a>
-            <a class="badge badge-primary" href="#" role="button">PDF</a>
+            {{ end }}
+            <!-- <a class="badge badge&#45;primary" href="#" role="button">PDF</a> -->
             {{ end }}
             {{ end }}
           </ul>
