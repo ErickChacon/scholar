@@ -58,18 +58,20 @@ body {
               <div id="ref-"{{ .id }}>
                 {{ $len := (len .author) }}
                   {{ range $index, $element := .author}}
-                    {{ if lt (add $index 2) $len}}
+                    {{ if eq (add $index 1) 1 }}
                       {{ .family }}, {{ .given}},
+                    {{ else if lt (add $index 2) $len}}
+                      {{ .given}} {{ .family }},
                     {{ else if lt (add $index 1) $len}}
-                      {{ .family }}, {{ .given}} and
+                      {{ .given }} {{ .family}} and
                     {{ else if eq (add $index 1) $len}}
-                      {{ .family }}, {{ .given}};
+                      {{ .given }} {{ .family}},
                     {{ end }}
                   {{ end }}
                 {{ (index .issued 0).year }}.
-                <strong>
+                <a class="font-weight-light">
                   “{{ .title | markdownify }}.”
-                </strong>
+                </a>
               {{ if eq .type "article-journal" }}
                 <em> {{ index . "container-title" }} </em>
                 {{ .volume }} ({{ .issue }}): {{ .page }}.
@@ -101,7 +103,9 @@ body {
             {{ range .Data.Pages }}
             <li><i class="fa-li fa fa-slideshare text-secondary"></i>
               <div id="talk-bl">
-                <strong> “{{ .Params.title }}.” </strong>
+                <a class="font-weight-light">
+                  “{{ .Params.title }}.”
+                </a>
                 <em> {{ .Params.event }}, </em>
                 {{ .Params.location }},
                 {{ dateFormat "2006" .Params.date}}.
