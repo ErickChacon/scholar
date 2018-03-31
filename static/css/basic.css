@@ -92,3 +92,11 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   transform: translateX(-50%);
   display: block;
 }
+
+code {
+  background: #f9f9f9;
+  color: black;
+  border: 1px solid #ddd;
+  padding: 0.1em;
+  box-shadow: 2px 2px 2px #eee;
+}
