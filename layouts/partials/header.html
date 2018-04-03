@@ -42,7 +42,7 @@
       <div class="container">
         <a class="navbar-brand" href=" {{ .Site.BaseURL }}">
           <i class='fa {{ .Site.Params.faicon }}'></i>
-          {{ .Site.Title }}
+          {{ .Site.Title | markdownify }}
         </a>
         <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
           <span class="navbar-toggler-icon"></span>

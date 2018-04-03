@@ -9,9 +9,20 @@ body {
 }
 
 .img-fluid {
-  max-width: 100px;
+  max-width: 150px;
   /* width: 80px; */
+  /* max-height: 400px; */
 }
+    /* .img-fluid { */
+    /*   max-width: 100%; */
+    /*   height: auto; */
+    /* } */
+
+.card-img-right {
+  height: 100%;
+  /* border-radius: 0 3px 3px 0; */
+}
+
 
 html {
   font-size: 1.1rem;

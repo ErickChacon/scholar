@@ -7,7 +7,7 @@
       {{ range .Data.Pages }}
       <div class="col-lg-10 col-md-12 offset-lg-1">
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
-          <img class="card-img-top col-lg-3 col-md-4 border-right rounded" src={{ "/images/" | relURL }}{{ .Params.image }} alt="Card image cap" style="padding:0;">
+          <img class="card-img-right col-lg-3 col-md-4 border-right rounded" src={{ "/images/" | relURL }}{{ .Params.image }} alt="Card image cap" style="padding:0;">
           <div class="card-body d-flex flex-column align-items-start ml-0 border-primary">
             <strong class="d-inline-block mb-2 text-primary">
               {{ $currentSection.Title }}

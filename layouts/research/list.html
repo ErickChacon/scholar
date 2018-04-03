@@ -34,8 +34,8 @@ body {
 
 <div class="jumbotron">
   <div class="container">
-    <h2 class="text-center"> {{ .Title }} bla </h2>
-    <div class="col-lg-10 offset-lg-1 col-md-12 text-justify">
+    <h2 class="text-center"> {{ .Title }} </h2>
+    <div class="col-lg-8 offset-lg-2 col-md-12 text-justify">
       {{ .Content }}
     </div>
   </div>
@@ -45,7 +45,11 @@ body {
   <div class="container">
 
     <h2 class="text-center"> {{ .Title }} </h2>
-    <hr>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 col-md-12 text-justify">
+        <hr>
+      </div>
+    </div>
 
     {{ if eq .Params.slug "papers" }}
       <div class="row">
