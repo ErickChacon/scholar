@@ -1,55 +1,23 @@
+<!doctype html>
+<html lang="{{with .Site.LanguageCode}}{{ . }}{{else}}en-us{{end}}">
+  {{ partial "head.html" .}}
 
-{{ partial "header.html" . }}
+  <header>
+    {{ partial "navbar.html" . }}
+  </header>
 
+  <body>
 
-<style type="text/css" media="screen">
-body {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-</style>
+    {{ partial "title.html" .}}
 
-<style type="text/css" media="screen">
-  @media (min-width:576px) {
-      .card-columns {
-        column-count: 1;
-      }
-  }
-    @media (min-width:768px) {
-      .card-columns {
-        column-count: 1;
-      }
-  }
-  @media (min-width:992px) {
-      .card-columns {
-        column-count: 2;
-      }
-  }
-  @media (min-width:1200px) {
-      .card-columns {
-        column-count: 2;
-      }
-  }
-</style>
-
-<div class="jumbotron">
-  <div class="container">
-    <h2 class="text-center"> {{ .Title }} </h2>
-    <div class="col-lg-8 offset-lg-2 col-md-12 text-justify">
-      {{ .Content }}
-    </div>
-  </div>
-</div>
-
-{{ range .Sections }}
-  <div class="container">
-
-    <h2 class="text-center"> {{ .Title }} </h2>
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1 col-md-12 text-justify">
-        <hr>
+    {{ range .Sections }}
+    <div class="container">
+      <h2 class="text-center"> {{ .Title }} </h2>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1 col-md-12 text-justify">
+          <hr>
+        </div>
       </div>
-    </div>
 
     {{ if eq .Params.slug "papers" }}
       <div class="row">
@@ -87,10 +55,10 @@ body {
               {{ end }}
               </div>
             </li>
-            <a  class="badge badge-primary" href="{{ $RelPermalink }}"
+            <a  class="badge badge-primary text-secondary" href="{{ $RelPermalink }}"
               role="button">Summary</a>
             {{ if isset . "DOI"}}
-            <a  class="badge badge-primary" href="https://doi.org/{{ .DOI }}"
+            <a  class="badge badge-primary text-secondary" href="https://doi.org/{{ .DOI }}"
               role="button">DOI</a>
             {{ end }}
             <!-- <a class="badge badge&#45;primary" href="#" role="button">PDF</a> -->
@@ -115,9 +83,9 @@ body {
                 {{ dateFormat "2006" .Params.date}}.
               </div>
             </li>
-            <a  class="badge badge-primary" href="{{ .RelPermalink }}"
+            <a  class="badge badge-primary text-secondary" href="{{ .RelPermalink }}"
               role="button">Summary</a>
-            <a class="badge badge-primary" href="#" role="button">Slides</a>
+            <a class="badge badge-primary text-secondary" href="#" role="button">Slides</a>
             {{ end }}
           </ul>
         </div>
@@ -127,4 +95,8 @@ body {
   </div>
 {{ end }}
 
-{{ partial "footer.html" . }}
+    {{ partial "foot.html" . }}
+
+  </body>
+
+</html>
