@@ -1,49 +1,59 @@
 <!doctype html>
 <html lang="{{with .Site.LanguageCode}}{{ . }}{{else}}en-us{{end}}">
-  {{ partial "head.html" .}}
 
-  <header>
-    {{ partial "navbar.html" . }}
-  </header>
+  <head>
+    {{ partial "head.html" .}}
+  </head>
 
   <body>
+    <div class = "docs-layout">
 
-    {{ if isset .Params "references" }}
-    {{ $biblio := (index .Params.references 0) }}
-    <div class="container">
-      <h2 class = "text-center col-lg-8 offset-lg-2 col-md-12 offset-md-0">
-        {{ $biblio.title | markdownify }}
-      </h2>
-      <br>
+      <header class = "layout-header">
+        {{ partial "header.html" . }}
+      </header>
 
-      <h5 class = "text-center col-lg-8 offset-lg-2 col-md-12 offset-md-0">
-        <em>
-          {{ $len := (len $biblio.author) }}
-          {{ range $index, $element := $biblio.author}}
-          {{ .family }}, {{ .given}}
-          {{ if lt (add $index 2) $len }}, {{end}}
-          {{ if eq (add $index 2) $len }} and {{end}}
-          {{ end }}
-        </em>
-      </h5>
-      <br>
+      <main role="main" class = "layout-main layout-main-padding">
+        {{ if isset .Params "references" }}
+        {{ $biblio := (index .Params.references 0) }}
+        <div class="container">
+          <h2 class = "text-center col-lg-8 offset-lg-2 col-md-12 offset-md-0">
+            {{ $biblio.title | markdownify }}
+          </h2>
+          <br>
 
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0 text-justify">
-          {{ $biblio.abstract }}
-          <hr>
-          <h5>Keywords:</h5>
-          {{ humanize $biblio.keyword }}. <br>
-          <a  class="badge badge-primary" href="https://doi.org/{{ $biblio.DOI }}"
-            role="button">DOI</a>
-          <a class="badge badge-primary" href="#" role="button">PDF</a>
+          <h5 class = "text-center col-lg-8 offset-lg-2 col-md-12 offset-md-0">
+            <em>
+              {{ $len := (len $biblio.author) }}
+              {{ range $index, $element := $biblio.author}}
+              {{ .family }}, {{ .given}}
+              {{ if lt (add $index 2) $len }}, {{end}}
+              {{ if eq (add $index 2) $len }} and {{end}}
+              {{ end }}
+            </em>
+          </h5>
+          <br>
+
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0 text-justify">
+              {{ $biblio.abstract }}
+              <hr>
+              <h5>Keywords:</h5>
+              {{ humanize $biblio.keyword }}. <br>
+              <a  class="badge badge-primary" href="https://doi.org/{{ $biblio.DOI }}"
+                role="button">DOI</a>
+              <a class="badge badge-primary" href="#" role="button">PDF</a>
+            </div>
+          </div>
         </div>
-      </div>
+        {{ end }}
+      </main>
+
+      <footer class="footer bg-light fixed-bottom text-muted layout-footer">
+          {{ partial "footer.html" . }}
+      </footer>
+
     </div>
-    {{ end }}
-
-    {{ partial "foot.html" . }}
-
+    {{ partial "scripts.html" .}}
   </body>
 
 </html>

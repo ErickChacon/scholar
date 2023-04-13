@@ -1,0 +1,40 @@
+/* Main layouts */
+
+.docs-layout {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: 56px 1fr 37px;
+}
+
+/* Header */
+
+.layout-header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    background: yellow;
+    z-index: 1;
+}
+
+/* Main */
+
+.layout-main {
+    grid-area: main;
+    padding-bottom: 20px;
+    overflow-x: hidden;
+}
+
+.layout-main-padding {
+    padding-top: 30px;
+}
+
+/* Footer */
+
+.layout-footer {
+    grid-area: footer;
+    position: fixed;
+    bottom: 0;
+}

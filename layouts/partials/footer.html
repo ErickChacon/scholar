@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand pt-0 pb-0">
+  <div class="container">
+    <ul class="navbar-nav me-auto">
+          {{ range $name, $path := .Site.Params.social }}
+          <li class="nav-item">
+          <a class="btn btn-social-icon btn-md" href="{{$path}}" target="_blank">
+            <i class="fa fa-{{ $name}}"></i>
+          </a>
+          </li>
+          {{ end }}
+    </ul>
+    <small class="navbar-text ms-auto">
+      {{ with .Site.Params.footer }}
+      {{ . | markdownify }}
+      {{ end }}
+    </small>
+  </div>
+</nav>

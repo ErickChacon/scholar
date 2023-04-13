@@ -1,29 +1,40 @@
 <!doctype html>
 <html lang="{{with .Site.LanguageCode}}{{ . }}{{else}}en-us{{end}}">
-  {{ partial "head.html" .}}
 
-  <header>
-    {{ partial "navbar.html" . }}
-  </header>
+  <head>
+    {{ partial "head.html" .}}
+  </head>
 
   <body>
-    {{ partial "title.html" . }}
+    <div class = "docs-layout">
 
-    {{ $.Scratch.Add "listtype" .Params.type}}
-    {{ $listtype := $.Scratch.Get "listtype"}}
+      <header class = "layout-header">
+        {{ partial "header.html" . }}
+      </header>
 
-    {{ if (isset .Params "type")}}
-      {{ if eq $listtype "software" }}
-        {{ partial "list-software.html" . }}
-      {{ else if eq $listtype "contents" }}
-        {{ partial "list-contents.html" . }}
-      {{ end }}
-    {{ else }}
-      {{ partial "list-default.html" . }}
-    {{ end }}
+      <main role="main" class = "layout-main">
+        {{ partial "title.html" . }}
 
-    {{ partial "foot.html" . }}
+        {{ $.Scratch.Add "listtype" .Params.type}}
+        {{ $listtype := $.Scratch.Get "listtype"}}
 
+        {{ if (isset .Params "type")}}
+          {{ if eq $listtype "software" }}
+            {{ partial "list-software.html" . }}
+          {{ else if eq $listtype "contents" }}
+            {{ partial "list-contents.html" . }}
+          {{ end }}
+        {{ else }}
+          {{ partial "list-default.html" . }}
+        {{ end }}
+      </main>
+
+      <footer class="footer bg-light fixed-bottom text-muted layout-footer">
+          {{ partial "footer.html" . }}
+      </footer>
+
+    </div>
+    {{ partial "scripts.html" .}}
   </body>
 
 </html>

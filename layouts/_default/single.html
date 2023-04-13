@@ -1,44 +1,55 @@
 <!doctype html>
 <html lang="{{with .Site.LanguageCode}}{{ . }}{{else}}en-us{{end}}">
-  {{ partial "head.html" .}}
 
-  <header>
-    {{ partial "navbar.html" . }}
-  </header>
+  <head>
+    {{ partial "head.html" .}}
+  </head>
 
   <body>
+    <div class = "docs-layout">
 
-    <div class="container extra-padding">
+      <header class = "layout-header">
+        {{ partial "header.html" . }}
+      </header>
 
-      <!-- title and tags -->
-      <h2 class = "col-lg-8 offset-lg-2 col-md-12 text-center"> {{ .Params.title | markdownify }} </h2>
-      <div class="col-lg-8 offset-lg-2 col-md-12 text-center">
-        {{ range .Params.tags}}
-        <span class="badge badge-primary badge-pill font-weight"> {{ . }}</span>
-        {{ end }}
-      </div>
+      <main role="main" class = "layout-main layout-main-padding">
 
-      <!-- metadata -->
-      <div class="d-flex col-lg-8 offset-lg-2 w-100 justify-content-between">
-        <p class="font-weight-light"> </p>
-        <small>
-          <p class="font-weight-light">
-          {{ .ReadingTime }} min
-          </p>
-        </small>
-      </div>
+        <div class="container">
 
-      <!-- content -->
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0 text-justify">
-          {{ .Content }}
+          <!-- title and tags -->
+          <h1 class="col-xxl-8 offset-xxl-2 col-lg-10 offset-lg-1 text-center">
+            {{ .Params.title | markdownify }}
+          </h1>
+          <div class="col-xxl-8 offset-xxl-2 col-lg-10 offset-lg-1 text-center">
+            {{ range .Params.tags}}
+            <span class="badge badge-primary badge-pill font-weight"> {{ . }}</span>
+            {{ end }}
+          </div>
+
+          <!-- metadata -->
+          <div class="d-flex col-lg-8 offset-lg-2 w-100 justify-content-between">
+            <p class="font-weight-light"> </p>
+            <small>
+              <p class="font-weight-light">
+              {{ .ReadingTime }} min
+              </p>
+            </small>
+          </div>
+
+          <!-- content -->
+          <div class="col-xxl-8 offset-xxl-2 col-lg-10 offset-lg-1 text-justify">
+            {{ .Content }}
+          </div>
+
         </div>
-      </div>
+      </main>
+
+      <footer class="footer bg-light fixed-bottom text-muted layout-footer">
+          {{ partial "footer.html" . }}
+      </footer>
 
     </div>
-
-    {{ partial "foot.html" . }}
-
+    {{ partial "scripts.html" .}}
   </body>
 
 </html>

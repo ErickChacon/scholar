@@ -1,0 +1,48 @@
+/* CUSTOM MEDIA STYLE CLASSES */
+
+/* limiting author image size */
+.img-author {
+    max-width: 150px;
+}
+
+
+/* similar to jumbotron for bootstrap 4 */
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+}
+
+/* Link format inside footer */
+
+.layout-footer .navbar-text a {
+    color: var(--bs-link-color);
+}
+
+.layout-footer .shadow-top {
+    box-shadow: inset 0px 1px 5px rgba(0, 0, 0, .1);
+}
+
+/* Text format */
+
+.text-justify {
+    text-align: justify;
+}
+
+/* Code format */
+
+code {
+  background: #f9f9f9;
+  color: black;
+  border: 1px solid #ddd;
+  padding: 0.1em;
+  box-shadow: 2px 2px 2px #eee;
+}
+
+
+/* MEDIA STYLE */
+
+img, iframe, video {
+    max-width: 100%;
+}
