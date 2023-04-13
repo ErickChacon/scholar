@@ -1,13 +1,10 @@
-# scholar
-Hugo theme for researchers and academic people powered by bootstrap. Suggested to be used with blogdown R package.
-
 # Scholar
 
 ## About
 
 [Hugo](https://gohugo.io/) theme using [Bootstrap
-5](https://getbootstrap.com/). The template is for a personal webpage to show
-your information, research, blog, so on.
+5](https://getbootstrap.com/). The template is designed for a personal
+researcher webpage to show your information, research, blog, so on.
 
 ![Webpage example](web-example.png)
 
