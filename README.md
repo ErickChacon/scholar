@@ -16,7 +16,7 @@ researcher webpage to show your information, research, blog, so on.
   `config.toml` file.
 - It includes a sticky footer. You can use social media links on the footer
   defining `[params.social]` on the `config.toml` file. The icons are used from
-  `fontawesome`.
+  [fontawesome](https://fontawesome.com/v4/icons/)`.
 
 ## Examples
 
