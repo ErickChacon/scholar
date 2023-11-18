@@ -5,8 +5,7 @@
       <!-- author's profile -->
       <div class="col-lg-4 col-sm-12 vcenter mx-auto">
         <div class="text-center">
-          {{ $imagepath := print "images/" .Site.Params.image }}
-          <img src="{{ relURL $imagepath }}" class="img-author center-block rounded-circle">
+          <img src="{{ print "images/" .Site.Params.image | relURL}}" class="img-author center-block rounded-circle">
           <h4 class="display-10 text-center"> {{ .Site.Params.author }} </h4>
           <p class="text-muted text-center">
           {{ .Site.Params.role }}<br>
