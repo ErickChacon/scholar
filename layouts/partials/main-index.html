@@ -31,7 +31,8 @@
         {{ range .Params.education }}
         <div>
           <li> {{.course}} </li>
-          <p class = "mb-1 text-secondary"> {{ .university | markdownify }}, {{ .years}} </p>
+          <p class = "mb-1 text-secondary"> {{ .university | markdownify }} </p>
+          <p class = "mb-1 text-secondary"> {{ .years}} </p>
         </div>
         {{ end }}
       </ul>
