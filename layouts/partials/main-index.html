@@ -39,7 +39,8 @@
     </div>
     <!-- research interests -->
     <div class="col-lg-4 col-sm-7 order-lg-2 order-md-1">
-      <h4>Research Interests</h4>
+      <h4></h4>
+      <h4> {{ if (isset .Params "researchlabel") }}{{ .Params.researchlabel }}{{ else }}Research Interests{{ end }} </h4>
       <ul>
         {{ range .Params.interests }}
         <li> {{.}} </li>
@@ -48,7 +49,7 @@
     </div>
     <!-- applications -->
     <div class="col-lg-3 col-sm-5 order-lg-3 order-md-2">
-      <h4>Applications</h4>
+      <h4> {{ if (isset .Params "applicationslabel") }}{{ .Params.applicationslabel }}{{ else }}Applications{{ end }} </h4>
       <ul>
         {{ range .Params.applications }}
         <li> {{.}} </li>
