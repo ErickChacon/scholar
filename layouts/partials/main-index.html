@@ -40,7 +40,7 @@
     <!-- research interests -->
     <div class="col-lg-4 col-sm-7 order-lg-2 order-md-1">
       <h4></h4>
-      <h4> {{ if (isset .Params "researchlabel") }}{{ .Params.researchlabel }}{{ else }}Research Interests{{ end }} </h4>
+      <h4> {{ if (isset .Params "interestslabel") }}{{ .Params.interestslabel }}{{ else }}Research Interests{{ end }} </h4>
       <ul>
         {{ range .Params.interests }}
         <li> {{.}} </li>
