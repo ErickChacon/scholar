@@ -26,7 +26,7 @@
   <div class="row">
     <!-- education -->
     <div class="col-lg-4 offset-lg-1 col-sm-12 order-lg-1 order-md-3">
-      <h4> {{ if (isset .Params.educationlabel) }}{{ .Params.educationlabel }}{{ else }}Education{{ end }} </h4>
+      <h4> {{ if (isset .Params "educationlabel") }}{{ .Params.educationlabel }}{{ else }}Education{{ end }} </h4>
       <ul>
         {{ range .Params.education }}
         <div>
